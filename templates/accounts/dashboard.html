@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title%} | {{ user }} Dashboard {% endblock %}
+
+{% block content%}
+
+<section id="showcase-inner" class="py-5 text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4">{{ user }} Dashboard</h1>
+        <p class="lead">Manage your Mizuxe account</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}">
+            <i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="breadcrumb-item active"> Dashboard</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+{% include 'partials/_alerts.html' %}
+
+
+<section id="dashboard" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Welcome {{ user }}</h2>
+
+
+        {% if user.is_authenticated %}
+        {% if inquiries %}
+        <p>Here are the Book listings that you have inquired about.</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Property</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for inquiry in inquiries %}
+            <tr>
+              <td>{{ inquiry.id }}</td>
+              <td>{{ inquiry.book }}</td>
+              <td>
+                <a class="btn btn-light" href="{% url 'book' inquiry.book_id %}">View Listing</a>
+              </td>
+              <td>
+                <a class="btn btn-danger" href="{% url 'delete' inquiry.id %}">Delete</a>
+              </td>
+
+            </tr>
+            {% endfor %}
+            {% else %}
+            <p>No Book listings inquiry available.</p>
+            {% endif %}
+            {% endif %}
+
+
+
+          </tbody>
+        </table>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% endblock %}

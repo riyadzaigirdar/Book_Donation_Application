@@ -1,0 +1,52 @@
+ {% load static %}
+
+ <nav class="navbar navbar-expand-xl fixed-top  navbar-light">
+   <div class="container">
+     <a href="{% url 'index'%}" class="navbar-brand">
+       <img src="{% static 'img/mlogo.png' %}" width="50" alt="">
+       <h class="d-inline align-center">Mizuxe</h>
+     </a>
+     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+
+
+     <div class="collapse navbar-collapse" id="navbarCollapse">
+       <ul class="navbar-nav ml-auto">
+         <li class="nav-item">
+           <a href="{% url 'index' %}" {% if request.get_full_path == "/" %} class="nav-link active" {% else %}
+             class="nav-link" {% endif %}>Home</a>
+         </li>
+         <li class="nav-item">
+           <a href="{% url 'books' %}" {%if 'books' in request.path %} class="nav-link active" {% else %}
+             class="nav-link" {% endif %}>Books for Donations</a>
+         </li>
+
+         {% if user.is_authenticated %}
+         <li class="nav-item">
+           <a href="{% url 'dashboard' %}" {%if 'dashboard' in request.path %} class="nav-link active" {% else %}
+             class="nav-link" {% endif %}>{{ user}} profile</a>
+         </li>
+
+         <li class="nav-item">
+           <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+         </li>
+
+
+         {% else %}
+         <li class="nav-item">
+           <a href="{% url 'login' %}" {%if 'login' in request.path %} class="nav-link active" {% else %}
+             class="nav-link" {% endif %}>Log In</a>
+         </li>
+         <li class="nav-item">
+           <a href="{% url 'register' %}" {%if 'register' in request.path %} class="nav-link active" {% else %}
+             class="nav-link" {% endif %}>Sign Up</a>
+         </li>
+
+         {% endif %}
+
+       </ul>
+
+     </div>
+   </div>
+ </nav>

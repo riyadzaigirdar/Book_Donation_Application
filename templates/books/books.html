@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title%} | Books Listings {% endblock %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<section id="bc" class="">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}">
+            <i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="breadcrumb-item active"> Books for Donations</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!--Section-->
+
+<div class="container">
+  <h1>Search Your Book</h1>
+
+  <form action=" {% url 'search' %}">
+    <div class='row'>
+
+      <div class="form-group col-md-4 text-secondary">
+        <label for="sr-only">Book Name</label>
+        <select class="form-control" name="book_name">
+          <option selected='true' disabled='disabled'>Book(all)</option>
+          {% for key, value in book_choices.items %}
+          <option value="{{ key }}">
+            {{ value }}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group col-md-4 text-secondary">
+        <label for="sr-only">Author Name</label>
+        <select class="form-control" name="author_name">
+          <option selected='true' disabled='disabled'>Author(all)</option>
+          {% for key, value in author_choices.items %}
+          <option value="{{ key }}"> {{ value }} </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group col-md-4 text-secondary">
+        <label for="sr-only">Category Name</label>
+        <select class="form-control" name="category_name">
+          <option selected='true' disabled='disabled'>Category(all)</option>
+          {% for key, value in category_choices.items %}
+          <option value="{{ key }}"> {{ value }} </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group col-md-6 text-secondary">
+        <label>Text</label>
+        <input name='des' class="form-control" id="exampleFormControlInput1" placeholder="Words of description">
+      </div>
+
+      <div class="form-group col-md-6 text-secondary">
+        <label for="sr-only">Address Name</label>
+        <select class="form-control" name="address_name">
+          <option selected='true' disabled='disabled'>Address(all)</option>
+          {% for key, value in address_choices.items %}
+          <option value="{{ key }}"> {{ value }} </option>
+          {% endfor %}
+        </select>
+      </div>
+
+    </div>
+    <button class="btn btn-secondary btn-block" type="submit">Submit</button>
+  </form>
+
+</div>
+
+
+
+<section class="my-5 bg-light text-secondary ">
+
+
+  <div class='container'>
+    <!--Main Area-->
+    <h1>Books For Donation</h1>
+    <div class="row">
+      {% if books %}
+
+      {% for book in books %}
+      <div class='col-md-4 my-5'>
+        <div class="card" style="width: 18rem;">
+          <img height='400px' class="card-img-top" src="{{ book.photo.url }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{ book.name|truncatewords:6 }}</h5>
+            <p class="card-text">{{ book.description|truncatewords:15 }}</p>
+
+            <a href="{% url 'book' book.id %}" class="btn btn-primary">View more</a>
+
+
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+
+      {% else %}
+      <div class="col md-12">
+        <p>No Books Available</p>
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<div class="container my-5">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {% if books.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ books.previous_page_number }}">Previous</a></li>
+      {% endif %}
+
+      <li class="page-item"><a class="page-link" href="">Page {{ books.number }} of {{ books.paginator.num_pages }}</a>
+      </li>
+
+
+
+      {% if books.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ books.next_page_number }}">Next</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
+<!--End Section-->
+
+
+{% endblock %}

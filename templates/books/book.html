@@ -1,0 +1,152 @@
+ {% extends 'base.html' %}
+
+ {% block title%} | {{ book.name }}{% endblock %}
+
+ {% load static %}
+
+ {% block content %}
+ {% include 'partials/_alerts.html' %}
+
+ <!-- Breadcrumb -->
+ <section id="bc" class="mt-3">
+   <div class="container">
+     <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="#">Home</a></li>
+         <li class="breadcrumb-item"><a href="#">Books</a></li>
+         <li class="breadcrumb-item active" aria-current="page">Book</li>
+       </ol>
+     </nav>
+   </div>
+ </section>
+
+
+
+ <section class="book mb-5">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-3 col-sm-12 book-pic">
+         <img width='200px' height='350px' src="{{ book.photo.url }}" alt="">
+         <h3 class="mt-2">{{ book.name }}</h3>
+         <h4 class="mt-5">Category</h4>
+         <p>{{ book.category }}</p>
+         {% comment '' %}
+         {% endcomment %}
+
+         <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+           aria-hidden="true">
+           <div class="modal-dialog" role="document">
+             <div class="modal-content">
+               <div class="modal-header text-center">
+                 <h4 class="modal-title w-100 font-weight-bold">Contact Form</h4>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+               <form action="{% url 'contact' %}" method="POST">
+                 {% csrf_token %}
+                 <div class="modal-body mx-3">
+                   <div class="md-form mb-5">
+                     <i class="fas fa-user prefix grey-text"></i>
+                     <label data-error="wrong" data-success="right" for="form34">Book name</label>
+                     <input name="book" type="text" value="{{book.name}}" id="form34" class="form-control validate">
+                   </div>
+
+                   <input type="hidden" value="{{ book.id }}" name="book_id">
+                   {% if user.is_authenticated %}
+                   <input type="hidden" value="{{ user.id }}" name="user_id">
+                   {% else %}
+                   <input type="hidden" value="0" name="user_id">
+                   {% endif %}
+                   <div class="md-form mb-5">
+                     <i class="fas fa-user prefix grey-text"></i>
+                     <label data-error="wrong" data-success="right" for="form34">Username</label>
+                     <input name="name" type="text" {% if user.is_authenticated %} value="{{user.username}}" {% endif %}
+                       id="form34" class="form-control">
+                   </div>
+
+                   <div class="md-form mb-5">
+                     <i class="fas fa-envelope prefix grey-text"></i>
+                     <label data-error="wrong" data-success="right" for="form29">Email</label>
+                     <input name="email" type="text" {% if user.is_authenticated %} value="{{ user.email }}" {% endif %}
+                       class="form-control">
+                   </div>
+
+                   <div class="md-form mb-5">
+                     <i class="fas fa-tag prefix grey-text"></i>
+                     <label data-error="wrong" data-success="right" for="form32">Phone</label>
+
+                     <input name="phone" value=0 type="text" id="form32" class="form-control">
+                   </div>
+
+                   <div class="md-form">
+                     <i class="fas fa-pencil prefix grey-text"></i>
+                     <label data-error="wrong" data-success="right" for="form8">Your message</label>
+                     <textarea type="text" name="message" id="form8" class="md-textarea form-control"
+                       rows="4"></textarea>
+                   </div>
+
+                 </div>
+                 <div class="modal-footer d-flex justify-content-center">
+                   <input type="submit" value="Done" class="btn btn-secondary btn-block btn-unique">
+                 </div>
+               </form>
+             </div>
+           </div>
+         </div>
+
+
+         <a href="" class="btn btn-danger btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Add
+           To Wishlist</a>
+
+
+
+
+
+         {% comment '' %}
+         {% endcomment %}
+       </div>
+       <div class="col">
+         <div class="col-md-6 col-lg-12">
+           <ul class="list-group list-group-flush">
+             <li class="list-group-item text-secondary">
+               <i class="fa fa-mars"></i> Author:{{ book.author }}
+               <span class="float-right"></span>
+             </li>
+             <li class="list-group-item text-secondary">
+               <i class="fab fa-accusoft"></i> Address: {{ book.address }}
+               <span class="float-right"></span>
+             </li>
+
+           </ul>
+         </div>
+
+
+         <div class="col-md-6 col-lg-12">
+           <ul class="list-group list-group-flush">
+             <li class="list-group-item text-secondary">
+               <i class="fas fa-chalkboard-teacher"></i> list_date: {{ book.list_date }}
+
+             </li>
+
+
+
+
+           </ul>
+
+         </div>
+
+         <div class="col-md-10">
+           <h4 class="mt-5">Description</h4>
+           <p>{{ book.description }}</p>
+         </div>
+       </div>
+
+
+
+
+     </div>
+   </div>
+ </section>
+
+ {% endblock %}

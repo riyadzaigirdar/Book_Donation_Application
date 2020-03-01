@@ -1,0 +1,21 @@
+<!-- NEWSLETTER -->
+<section id="newsletter" class="bg-dark text-white py-5">
+  <div class="container">
+    <h1 class="text-center mb-5">Subscribe To Us</h1>
+    <form action="{% url 'subscribe' %}" method="POST">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-4">
+          <input type="text" name="name" class="form-control form-control-lg mb-resp" placeholder="Enter Name">
+        </div>
+        <div class="col-md-4">
+          <input type="email" name="email" class="form-control form-control-lg mb-resp" placeholder="Enter Email">
+        </div>
+        <div class="col-md-4">
+          <input type="submit" value="Subscribe To Us" class="btn-danger form-control form-control-lg mb-resp">
+
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

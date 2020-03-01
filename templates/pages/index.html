@@ -1,0 +1,291 @@
+{% extends 'base.html'%}
+
+{% load static%}
+{% block title%} | Welcome {% endblock %}
+
+{% block content %}
+
+<!-- START HERE -->
+
+
+
+<!-- Showcase -->
+{% include 'partials/_alerts.html' %}
+<section id="showcase" class="py-2">
+  <div class="primary-overlay text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-center">
+          <h1 class=" mt-5 pt-5">
+            Welcome To Online Book Donation
+          </h1>
+          <p class="lead">Book has remained in our best companion throughout the entire civilization. Every year a large
+            number of books are published each year. So that is a common fact that being we dont require some of the
+            books we have brought. So this books are thrown away .But there is always a possibilty that some of us need
+            that same book which is not being used .Donation of books can be a useful solution for unused books.</p>
+
+        </div>
+        <div class="col-lg-6 ">
+          <img src="{% static 'img/book.png' %}" alt="" class="d-none d-lg-block img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- About -->
+<section id="about" class="py-5 text-center bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="info-header mb-3">
+          <h1 class="text-primary pb-3">
+            Why This System?
+          </h1>
+          <p class="lead pb3">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, ipsam.
+          </p>
+        </div>
+        <!--accordion-->
+        <section id="accordion">
+          <div class="card">
+
+            <div class="card-header">
+              <h5 class="mb-0">
+                <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">
+                  <i class="fas fa-arrow-circle-down"></i> Get Inspired
+                </div>
+              </h5>
+            </div>
+            <div id="collapse1" class="collapse show">
+              <div class="card-header">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, odio? Quas voluptates mollitia similique
+                cum, harum, quis impedit eligendi molestias at vitae, ratione repellat. Quam quas nesciunt, laborum
+                reprehenderit omnis itaque ab cum veniam? Quasi blanditiis vitae impedit facere iure sint voluptas, quae
+                corporis similique facilis explicabo pariatur molestiae minima!
+              </div>
+            </div>
+
+            <div class="card-header">
+              <h5 class="mb-0">
+                <div href="#collapse2" data-toggle="collapse" data-parent="#accordion">
+                  <i class="fas fa-arrow-circle-down"></i> Get Motivated
+                </div>
+              </h5>
+            </div>
+            <div id="collapse2" class="collapse show">
+              <div class="card-header">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, odio? Quas voluptates mollitia similique
+                cum, harum, quis impedit eligendi molestias at vitae, ratione repellat. Quam quas nesciunt, laborum
+                reprehenderit omnis itaque ab cum veniam? Quasi blanditiis vitae impedit facere iure sint voluptas, quae
+                corporis similique facilis explicabo pariatur molestiae minima!
+              </div>
+            </div>
+
+            <div class="card-header">
+              <h5 class="mb-0">
+                <div href="#collapse3" data-toggle="collapse" data-parent="#accordion">
+                  <i class="fas fa-arrow-circle-down"></i> Be Educated
+                </div>
+              </h5>
+            </div>
+            <div id="collapse3" class="collapse show">
+              <div class="card-header">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, odio? Quas voluptates mollitia similique
+                cum, harum, quis impedit eligendi molestias at vitae, ratione repellat. Quam quas nesciunt, laborum
+                reprehenderit omnis itaque ab cum veniam? Quasi blanditiis vitae impedit facere iure sint voluptas, quae
+                corporis similique facilis explicabo pariatur molestiae minima!
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- Donators -->
+
+<section id="author" class="bg-light text-center my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="info-header mb-5">
+          <h1 class="text-primary pb-3">
+            Meet Our Top Donators
+          </h1>
+          <p class="lead pb-3">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet at porro similique exercitationem nihil
+            placeat veritatis dolore voluptatem, molestiae explicabo.
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <!-- person1 -->
+      <div class="col-lg-3 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <img src="{% static 'img/person1.jpg' %}" alt="" class="img-fluid rounded-circle w-50 mb-3">
+            <h3>Susan Williams</h3>
+            <h5 class="text-muted">Dhaka</h5>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis est assumenda reprehenderit fugit
+              eius, voluptatem quae quis labore natus facere?</p>
+            <div class="d-flex justify-content-center">
+
+              <div class="p-4">
+                <a href="http://facebook.com">
+                  <i class="fab fa-facebook"></i>
+                </a>
+              </div>
+
+              <div class="p-4">
+                <a href="http://twitter.com">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+
+              <div class="p-4">
+                <a href="http://instagram.com">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- person2 -->
+      <div class="col-lg-3 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <img src="{% static 'img/person2.jpg' %}" alt="" class="img-fluid rounded-circle w-50 mb-3">
+            <h3>Grace Smith</h3>
+            <h5 class="text-muted">Cumilla</h5>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis est assumenda reprehenderit fugit
+              eius, voluptatem quae quis labore natus facere?</p>
+            <div class="d-flex justify-content-center">
+
+              <div class="p-4">
+                <a href="http://facebook.com">
+                  <i class="fab fa-facebook"></i>
+                </a>
+              </div>
+
+              <div class="p-4">
+                <a href="http://twitter.com">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+
+              <div class="p-4">
+                <a href="http://instagram.com">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- person3 -->
+      <div class="col-lg-3 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <img src="{% static 'img/person3.jpg' %}" alt="" class="img-fluid rounded-circle w-50 mb-3">
+            <h3>John Doe</h3>
+            <h5 class="text-muted">Chittagong</h5>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis est assumenda reprehenderit fugit
+              eius, voluptatem quae quis labore natus facere?</p>
+            <div class="d-flex justify-content-center">
+
+              <div class="p-4">
+                <a href="http://facebook.com">
+                  <i class="fab fa-facebook"></i>
+                </a>
+              </div>
+
+              <div class="p-4">
+                <a href="http://twitter.com">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+
+              <div class="p-4">
+                <a href="http://instagram.com">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- person4 -->
+      <div class="col-lg-3 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <img src="{% static 'img/person4.jpg' %}" alt="" class="img-fluid rounded-circle w-50 mb-3">
+            <h3>Kevin Swanson</h3>
+            <h5 class="text-muted">Sylhet</h5>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis est assumenda reprehenderit fugit
+              eius, voluptatem quae quis labore natus facere?</p>
+            <div class="d-flex justify-content-center">
+
+              <div class="p-4">
+                <a href="http://facebook.com">
+                  <i class="fab fa-facebook"></i>
+                </a>
+              </div>
+
+              <div class="p-4">
+                <a href="http://twitter.com">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </div>
+
+              <div class="p-4">
+                <a href="http://instagram.com">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</section>
+
+
+
+
+
+
+{% endblock %}
